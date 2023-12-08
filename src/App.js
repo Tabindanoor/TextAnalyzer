@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import "./App.css"
 
-function App() {
+const App = () => {
+  const [value,setValue]=useState("");
+  const changeInput=(e)=>{
+    setValue(e.target.value);
+  }
+  const setUpper=()=>{
+    setValue(value.toUpperCase());
+  }
+  const setLower=()=>{
+    setValue(value.toLowerCase());
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='body'>
+      <h1>Text Analyzer</h1> 
+      <div>
+        <input onChange={changeInput} value={value} type="text" />
+        <div className='flex'>
+          <button onClick={()=>setUpper()}>UpperCase</button>
+        <button onClick={()=>setLower()}>LowerCase</button> 
+        </div>
+       
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
